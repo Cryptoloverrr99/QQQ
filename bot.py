@@ -128,6 +128,6 @@ def run_check(self):
 
 if __name__ == '__main__':
     analyzer = TokenAnalyzer()
-    scheduler = BlockingScheduler()
+    scheduler = BlockingScheduler(timezone="UTC")
     scheduler.add_job(analyzer.run_check, 'interval', seconds=180)
     scheduler.start()
