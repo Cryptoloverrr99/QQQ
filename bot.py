@@ -68,22 +68,6 @@ class TokenAnalyzer:
             logger.error(f"Check error: {str(e)}")
             return False
 
-    def format_alert(self, token):
-    """Crée le message Markdown pour Telegram"""
-    socials = token.get('socials', {})
-    return (
-        "🚨 **ALERTE MEMECOIN** 🚨\n\n"
-        f"• Token : {token.get('symbol')}\n"
-        f"• Market Cap : ${token.get('marketCap', 0):,.0f}\n"
-        f"• Liquidité : ${token.get('liquidity', {}).get('usd', 0):,.0f}\n"
-        f"• Volume 24h : ${token.get('volume24h', 0):,.0f}\n"
-        f"• Holders : {token.get('holdersCount', 0)}\n"
-        f"• Boosté : {'✅' if token.get('isBoosted') else '❌'}\n\n"
-        f"[Chart]({token.get('url')}) | "
-        f"[Twitter]({socials.get('twitter', '')}) | "
-        f"[Site]({socials.get('website', '')})"
-    )
-
 def run_check(self):
     try:
         for token in self.fetch_token_data():
