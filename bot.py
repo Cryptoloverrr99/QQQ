@@ -130,7 +130,7 @@ if __name__ == '__main__':
     analyzer = TokenAnalyzer()
     scheduler = BlockingScheduler(timezone="UTC")
     scheduler.add_job(
-    analyzer.format_alert,  # Nom corrigé
+    analyzer.check_and_alert,  # Nom corrigé
     'interval', 
     seconds=180
     )
