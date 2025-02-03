@@ -129,5 +129,8 @@ def run_check(self):
 if __name__ == '__main__':
     analyzer = TokenAnalyzer()
     scheduler = BlockingScheduler(timezone="UTC")
-    scheduler.add_job(analyzer.run_check, 'interval', seconds=180)
-    scheduler.start()
+    scheduler.add_job(
+    analyzer.format_alert,  # Nom corrigé
+    'interval', 
+    seconds=180
+    )
